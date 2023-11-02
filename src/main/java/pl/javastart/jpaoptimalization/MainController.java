@@ -3,12 +3,14 @@ package pl.javastart.jpaoptimalization;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import pl.javastart.jpaoptimalization.country.Country;
 import pl.javastart.jpaoptimalization.country.CountryService;
+import pl.javastart.jpaoptimalization.country.CountryWithBiggestCity;
+import pl.javastart.jpaoptimalization.countrylanguage.CountryWithLanguages;
 import pl.javastart.jpaoptimalization.countrylanguage.CountryLanguage;
 import pl.javastart.jpaoptimalization.countrylanguage.CountryLanguageService;
 
 import java.util.List;
+import java.util.Set;
 
 @Controller
 public class MainController {
@@ -24,7 +26,7 @@ public class MainController {
 
     @GetMapping("/najwieksze-miasta")
     public String countryWithBiggestCity(Model model) {
-        List<Country> countries = countryService.findAll();
+        Set<CountryWithBiggestCity> countries = countryService.findAllWithBiggestCity();
         model.addAttribute("countries", countries);
 
         return "countryWithBiggestCity";
@@ -32,7 +34,7 @@ public class MainController {
 
     @GetMapping("/kraje-i-jezyki")
     public String countryWithLanguages(Model model) {
-        List<Country> countries = countryService.findAll();
+        List<CountryWithLanguages> countries = countryService.findAllCountriesWithLanguages();
 
         model.addAttribute("countries", countries);
 
