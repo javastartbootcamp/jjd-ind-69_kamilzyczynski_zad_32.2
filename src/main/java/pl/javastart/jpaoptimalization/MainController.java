@@ -34,7 +34,7 @@ public class MainController {
 
     @GetMapping("/kraje-i-jezyki")
     public String countryWithLanguages(Model model) {
-        List<CountryWithLanguages> countries = countryService.findAllCountriesWithLanguages();
+        List<CountryLanguage> countries = countryLanguageService.findAll();
 
         model.addAttribute("countries", countries);
 

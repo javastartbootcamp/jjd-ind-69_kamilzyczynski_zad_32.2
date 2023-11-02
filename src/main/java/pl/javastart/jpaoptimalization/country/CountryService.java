@@ -23,7 +23,4 @@ public class CountryService {
         return countryRepository.findAllCountriesWithBiggestCity();
     }
 
-    public List<CountryWithLanguages> findAllCountriesWithLanguages() {
-        return countryRepository.findAllCountriesWithLanguages();
-    }
 }
