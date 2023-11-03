@@ -14,4 +14,9 @@ public interface CountryRepository extends JpaRepository<Country, String> {
             "ORDER BY c.name")
     Set<CountryWithBiggestCity> findAllCountriesWithBiggestCity();
 
+    @Query("SELECT DISTINCT c FROM Country c LEFT JOIN FETCH c.languages ORDER BY c.name")
+    List<Country> findAllCountriesWithLanguages();
+
+    @Query("SELECT NEW pl.javastart.jpaoptimalization.country.CountryDto(c.code, c.name) FROM Country c")
+    List<CountryDto> findAllCountriesWithCode();
 }

@@ -1,7 +1,6 @@
 package pl.javastart.jpaoptimalization.country;
 
 import org.springframework.stereotype.Service;
-import pl.javastart.jpaoptimalization.countrylanguage.CountryWithLanguages;
 
 import java.util.List;
 import java.util.Set;
@@ -21,6 +20,10 @@ public class CountryService {
 
     public Set<CountryWithBiggestCity> findAllWithBiggestCity() {
         return countryRepository.findAllCountriesWithBiggestCity();
+    }
+
+    public List<Country> findAllWithLanguages() {
+        return countryRepository.findAllCountriesWithLanguages();
     }
 
 }
